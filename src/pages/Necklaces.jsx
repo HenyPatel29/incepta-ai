@@ -40,24 +40,31 @@ image:"https://img.freepik.com/premium-photo/luxury-diamond-necklace-dark-backgr
 
 const handleInquiry = () => {
 
-if (!name || !email || !phone) {
-alert("Please fill in all fields.");
-return;
-}
+  if (!name || !email || !phone) {
+    alert("Please fill in all fields.");
+    return;
+  }
 
-if (!email.includes("@")) {
-alert("Please enter a valid email address.");
-return;
-}
+  if (!email.includes("@")) {
+    alert("Please enter a valid email address.");
+    return;
+  }
 
-alert("✅ Inquiry Submitted Successfully!");
 
-setName("");
-setEmail("");
-setPhone("");
+  const phoneRegex = /^[0-9]{10}$/;
 
-setShowInquiry(false);
+  if (!phoneRegex.test(phone)) {
+    alert("Phone number must be exactly 10 digits.");
+    return;
+  }
 
+  alert("✅ Inquiry Submitted Successfully!");
+
+  setName("");
+  setEmail("");
+  setPhone("");
+
+  setShowInquiry(false);
 };
 
 return (
@@ -191,11 +198,18 @@ onChange={(e) => setEmail(e.target.value)}
 />
 
 <input
-type="tel"
-placeholder="Phone Number"
-className="inquiry-input"
-value={phone}
-onChange={(e) => setPhone(e.target.value)}
+  type="tel"
+  placeholder="Phone Number"
+  className="inquiry-input"
+  value={phone}
+  onChange={(e) => {
+    
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length <= 10) {
+      setPhone(value);
+    }
+  }}
 />
 
 <button

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -15,73 +15,59 @@ import Bracelets from "./pages/Bracelets";
 import Pendants from "./pages/Pendants";
 import Necklaces from "./pages/Necklaces";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import Privacy from "./pages/Privacy";
 
 function App() {
 
-const [showAssistant, setShowAssistant] = useState(false);
+  const [showAssistant, setShowAssistant] = useState(false);
 
-return (
+  const location = useLocation();
 
-<div className="app">
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
-<Navbar toggleAssistant={() => setShowAssistant(!showAssistant)} />
+  return (
+    <div className="app">
 
-{showAssistant && (
-  <AIAssistant
-    closeAssistant={() => setShowAssistant(false)}
-  />
-)}
+      <Navbar toggleAssistant={() => setShowAssistant(!showAssistant)} />
 
-<Routes>
+      {showAssistant && (
+        <AIAssistant closeAssistant={() => setShowAssistant(false)} />
+      )}
 
-<Route
-path="/"
-element={
-<>
-<Hero />
-<Categories />
-<Featured />
-</>
-}
-/>
+      <Routes>
 
-<Route
-path="/rings"
-element={<Rings />}
-/>
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Categories />
+              <Featured />
+            </>
+          }
+        />
 
-<Route
-path="/earrings"
-element={<Earrings />}
-/>
+        <Route path="/rings" element={<Rings />} />
+        <Route path="/earrings" element={<Earrings />} />
+        <Route path="/bracelets" element={<Bracelets />} />
+        <Route path="/pendants" element={<Pendants />} />
+        <Route path="/necklaces" element={<Necklaces />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/returns" element={<Returns />} />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
 
-<Route
-path="/bracelets"
-element={<Bracelets />}
-/>
+      <Footer />
 
-<Route
-path="/pendants"
-element={<Pendants />}
-/>
-
-<Route
-path="/necklaces"
-element={<Necklaces />}
-/>
-
-<Route
-path="/about"
-element={<About />}
-/>
-
-</Routes>
-
-<Footer />
-
-</div>
-
-);
+    </div>
+  );
 }
 
 export default App;

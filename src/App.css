@@ -1179,6 +1179,27 @@ font-size:45px;
   color:#555;
 }
 
+.user{
+background:#d4af37;
+color:white;
+padding:10px 15px;
+border-radius:15px;
+margin:10px 0;
+margin-left:auto;
+max-width:80%;
+width:fit-content;
+}
+
+.bot{
+background:#f3f3f3;
+color:#222;
+padding:10px 15px;
+border-radius:15px;
+margin:10px 0;
+max-width:80%;
+width:fit-content;
+}
+
 .inquiry-input{
 width:100%;
 padding:14px;
@@ -1191,4 +1212,77 @@ outline:none;
 
 .inquiry-input:focus{
 border-color:#d4af37;
+}
+
+/* hide hamburger on desktop */
+.menu-icon{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* mobile navbar */
+@media(max-width:768px){
+
+.menu-icon{
+  display:block;
+}
+
+nav{
+  position:absolute;
+  top:85px;
+  left:0;
+  width:100%;
+  background:white;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  padding:20px 0;
+  display:none;
+}
+
+nav.active{
+  display:flex;
+}
+
+.navbar{
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+}
+
+}
+.featured-banner{
+  position:relative;
+  max-width:700px;
+  margin:auto;
+}
+
+.featured-card img{
+  width:95%;
+  height:400px;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.featured-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:50px;
+  height:50px;
+  border:none;
+  border-radius:50%;
+  background:#d4af37;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.left-arrow{
+  left:-40px;
+}
+
+.right-arrow{
+  right:-40px;
 }

@@ -139,30 +139,44 @@ required
 />
 
 <input
-type="tel"
-placeholder="Phone Number"
-className="inquiry-input"
-value={phone}
-onChange={(e) => setPhone(e.target.value)}
-required
+  type="tel"
+  placeholder="Phone Number"
+  className="inquiry-input"
+  value={phone}
+  onChange={(e) => {
+    
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length <= 10) {
+      setPhone(value);
+    }
+  }}
 />
 
 <button
-className="buy-btn"
-onClick={() => {
+  className="buy-btn"
+  onClick={() => {
 
-if (!name || !email || !phone) {
-alert("Please fill in all fields");
-return;
-}
+    if (!name || !email || !phone) {
+      alert("Please fill in all fields");
+      return;
+    }
 
-alert("✅ Inquiry Submitted Successfully!");
+    if (!/^\d{10}$/.test(phone)) {
+      alert("Phone number must be exactly 10 digits");
+      return;
+    }
 
-setShowInquiry(false);
+    alert("✅ Inquiry Submitted Successfully!");
 
-}}
+    setName("");
+    setEmail("");
+    setPhone("");
+    setShowInquiry(false);
+
+  }}
 >
-Submit Inquiry
+  Submit Inquiry
 </button>
 
 

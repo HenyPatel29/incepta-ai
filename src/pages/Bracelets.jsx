@@ -40,24 +40,31 @@ image:"https://i.pinimg.com/736x/35/9f/00/359f00a01f652efa27ce37466a27c4ba.jpg"
 
 const handleInquiry = () => {
 
-if (!name || !email || !phone) {
-alert("Please fill in all fields.");
-return;
-}
+  if (!name || !email || !phone) {
+    alert("Please fill in all fields.");
+    return;
+  }
 
-if (!email.includes("@")) {
-alert("Please enter a valid email address.");
-return;
-}
+  if (!email.includes("@")) {
+    alert("Please enter a valid email address.");
+    return;
+  }
 
-alert("✅ Inquiry Submitted Successfully!");
+  // ✅ PHONE VALIDATION (ONLY 10 DIGITS)
+  const phoneRegex = /^[0-9]{10}$/;
 
-setName("");
-setEmail("");
-setPhone("");
+  if (!phoneRegex.test(phone)) {
+    alert("Phone number must be exactly 10 digits.");
+    return;
+  }
 
-setShowInquiry(false);
+  alert("✅ Inquiry Submitted Successfully!");
 
+  setName("");
+  setEmail("");
+  setPhone("");
+
+  setShowInquiry(false);
 };
 
 return (
@@ -191,11 +198,18 @@ onChange={(e) => setEmail(e.target.value)}
 />
 
 <input
-type="tel"
-placeholder="Phone Number"
-className="inquiry-input"
-value={phone}
-onChange={(e) => setPhone(e.target.value)}
+  type="tel"
+  placeholder="Phone Number"
+  className="inquiry-input"
+  value={phone}
+  onChange={(e) => {
+    
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length <= 10) {
+      setPhone(value);
+    }
+  }}
 />
 
 <button
