@@ -15,7 +15,7 @@ const handleSubmit = () => {
     return;
   }
 
-   if (!email.includes("@gmail.com")) {
+  if (!email.includes("@gmail.com")) {
     alert("Please enter a valid email address.");
     return;
   }
@@ -26,6 +26,13 @@ const handleSubmit = () => {
   }
 
   alert("✅ Return Request Submitted Successfully!");
+
+  setName("");
+  setEmail("");
+  setPhone("");
+  setOrderId("");
+  setReason("");
+
 };
 
   return (

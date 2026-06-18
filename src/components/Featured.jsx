@@ -12,18 +12,18 @@ function Featured() {
 const [currentIndex, setCurrentIndex] = useState(0);
 
 const prevSlide = () => {
-  setCurrentIndex(
-    currentIndex === 0
+  setCurrentIndex((prev) =>
+    prev === 0
       ? products.length - 1
-      : currentIndex - 1
+      : prev - 1
   );
 };
 
 const nextSlide = () => {
-  setCurrentIndex(
-    currentIndex === products.length - 1
+  setCurrentIndex((prev) =>
+    prev === products.length - 1
       ? 0
-      : currentIndex + 1
+      : prev + 1
   );
 };
 
@@ -59,11 +59,11 @@ const nextSlide = () => {
       <div className="featured-banner">
 
   <button
-    className="featured-arrow left-arrow"
-    onClick={prevSlide}
-  >
-    ❮
-  </button>
+  className="featured-arrow left-arrow"
+  onClick={prevSlide}
+>
+  ❮
+</button>
 
   <div className="featured-card">
 
@@ -88,12 +88,12 @@ const nextSlide = () => {
 
   </div>
 
-  <button
-    className="featured-arrow right-arrow"
-    onClick={nextSlide}
-  >
-    ❯
-  </button>
+ <button
+  className="featured-arrow right-arrow"
+  onClick={nextSlide}
+>
+  ❯
+</button>
 
 </div>
 

@@ -1253,30 +1253,36 @@ nav.active{
 
 }
 .featured-banner{
-  position:relative;
-  max-width:700px;
-  margin:auto;
-}
-
-.featured-card img{
-  width:95%;
-  height:400px;
-  object-fit:cover;
-  border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:25px;
+margin-top:40px;
 }
 
 .featured-arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:50px;
-  height:50px;
-  border:none;
-  border-radius:50%;
-  background:#d4af37;
-  color:white;
-  font-size:24px;
-  cursor:pointer;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#d4af37;
+color:white;
+font-size:28px;
+cursor:pointer;
+transition:.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 4px 15px rgba(0,0,0,.15);
+}
+
+.featured-arrow:hover{
+background:#be9820;
+transform:scale(1.08);
+}
+
+.featured-arrow:active{
+transform:scale(.95);
 }
 
 .left-arrow{
